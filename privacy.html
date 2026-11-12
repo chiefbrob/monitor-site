@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy policy — Baby Monitor</title>
-  <meta name="description" content="How Baby Monitor handles microphone audio and the phone number you set: on-device only, never recorded or uploaded.">
+  <meta name="description" content="How Baby Monitor handles microphone audio, optional local-network live view and the phone number you set: never recorded, never uploaded.">
   <meta name="theme-color" content="#0B1522">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -26,13 +26,15 @@
 
   <main class="wrap policy">
     <h1>Privacy policy</h1>
-    <p class="meta">Baby Monitor for Android · Effective 12 November 2026 · Version 1.2</p>
+    <p class="meta">Baby Monitor for Android · Effective 12 November 2026 · Version 1.3</p>
 
     <p>
       Baby Monitor (“the app”, “we”, “us”) is a noise monitor for Android,
       published by Dabotap. This policy explains what the app does with your
       information. The short version: <strong>the app listens, decides, and calls —
-      all on your phone. Audio is never recorded and never sent anywhere.</strong>
+      all on your phone. Audio is never recorded and never reaches us. If you turn on
+      Live view, the room’s audio and (optionally) video go directly to another device
+      on your own Wi-Fi. Nothing goes to the internet.</strong>
     </p>
 
     <h2>1. Who we are</h2>
@@ -50,13 +52,22 @@
       with the threshold you chose, and — when the threshold is crossed for long
       enough — shows an alert and can place a phone call to the number you entered.
     </p>
+    <p>
+      <strong>Live view</strong> is an optional second screen. When you turn it on, this
+      phone advertises itself on the local network and a second phone running the same
+      app can find it and watch or listen. Only devices on the same Wi-Fi can connect,
+      and the connection is direct: there is no relay server, no account and no
+      internet upload.
+    </p>
 
-    <h2>3. Audio</h2>
+    <h2>3. Audio, video and Live view</h2>
     <ul>
-      <li><strong>We do not record audio.</strong> No audio file, clip or buffer is written to storage.</li>
-      <li><strong>We do not transmit audio.</strong> The app has no backend, no cloud storage and no audio networking code.</li>
+      <li><strong>We do not record audio or video.</strong> No audio file, clip, frame or buffer is written to storage, and there is no recording feature.</li>
       <li><strong>Audio is processed in memory</strong> long enough to calculate a loudness value (dBFS), then discarded.</li>
       <li><strong>The microphone is used only while monitoring is on.</strong> When you press Stop, or Android stops the service, the microphone is released.</li>
+      <li><strong>Live view is local only.</strong> If you turn it on, the microphone track — and the camera while a viewer is connected — is sent directly to the other device on your Wi-Fi, encrypted in transit. The audio and video never pass through a Dabotap server, a cloud service or the internet.</li>
+      <li><strong>The camera is used only while someone is watching.</strong> The camera starts when a viewer connects and stops when the last one leaves. It is released with the service.</li>
+      <li><strong>Live view is off by default</strong> and is not needed for the noise monitor, the alert or the call.</li>
     </ul>
 
     <h2>4. The phone number you enter</h2>
@@ -83,6 +94,9 @@
         <tr><td>Phone</td><td>To place the call to the number you set. If you decline, the alert opens the dialer with the number filled in instead.</td></tr>
         <tr><td>Notifications</td><td>Android requires a visible notification for a foreground service; it also carries alerts.</td></tr>
         <tr><td>Foreground service (microphone)</td><td>To keep listening while the screen is off or the app is in the background.</td></tr>
+        <tr><td>Camera</td><td>Only if you turn on Live view video, to publish the room while a viewer is connected.</td></tr>
+        <tr><td>Foreground service (camera)</td><td>To keep the camera available while the screen is off and a viewer is watching.</td></tr>
+        <tr><td>Nearby Wi-Fi (multicast)</td><td>To advertise this phone on the local network and keep discovery and the stream alive with the screen off.</td></tr>
         <tr><td>Full-screen alerts</td><td>To show the alert over the lock screen. On Android 14+ this is special access; without it the alert appears as a high-priority notification.</td></tr>
         <tr><td>Wake lock, vibrate</td><td>To keep the CPU alive during monitoring and to make the alert noticeable.</td></tr>
       </tbody>
@@ -94,6 +108,7 @@
       <li>No analytics or crash-reporting SDK of our own.</li>
       <li>No audio, transcripts or recordings.</li>
       <li>No account, contacts, calendar, photos or files.</li>
+      <li>No audio or video uploaded to us: Live view is a direct connection between two devices on your Wi-Fi.</li>
     </ul>
 
     <h3>Advertising</h3>
@@ -121,7 +136,8 @@
     <p>
       Your settings and number remain on your phone until you change them, clear the
       app’s storage, or uninstall the app. Uninstalling removes the app’s private
-      storage. We hold no copy to delete.
+      storage. We hold no copy to delete. Live view streams are relayed only for the
+      moment they are watched: nothing is stored by the app, and we never receive a copy.
     </p>
 
     <h2>10. Security</h2>
@@ -144,6 +160,7 @@
       <li>Revoke microphone, phone or notification access in Android Settings.</li>
       <li>Clear the app’s storage or uninstall it to delete the number and settings.</li>
       <li>Decline the ad consent form where it is shown; the banner will not load.</li>
+      <li>Turn Live view off, or press Stop while watching, to end a local stream immediately.</li>
     </ul>
 
     <h2>13. Changes</h2>
