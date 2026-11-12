@@ -25,6 +25,21 @@ or two; Cloudflare may serve a cached copy for up to ten minutes.
 The older Cloudflare Pages workflow in the app repo (`.github/workflows/site.yml`) is manual-only
 and is not the live path. Do not point the domain at both hosts.
 
+## HTTPS
+
+`monitor.dabotap.com` is a **proxied** Cloudflare CNAME to `chiefbrob.github.io`. Cloudflare
+terminates TLS with the zone's `*.dabotap.com` certificate and GitHub Pages serves the files. Keep
+the record proxied: with it switched to DNS-only, GitHub presents its `*.github.io` certificate and
+every browser shows a name-mismatch error. Resolvers that cached the DNS-only answer keep the error
+until that old TTL expires, even after the proxy is restored.
+
+Check the edge directly when a browser still complains:
+
+```bash
+dig +short @adele.ns.cloudflare.com monitor.dabotap.com A
+curl -sSI --resolve monitor.dabotap.com:443:<edge-ip> https://monitor.dabotap.com/
+```
+
 ## Before publishing
 
 - Keep `site/privacy.html` in step with `docs/PRIVACY.md` and the Play Data safety form, including the
