@@ -42,7 +42,7 @@ curl -sSI --resolve monitor.dabotap.com:443:<edge-ip> https://monitor.dabotap.co
 
 ## Before publishing
 
-- Keep `site/privacy.html` in step with `docs/PRIVACY.md` and the Play Data safety form, including the
-  AdMob advertising section.
+- Keep `site/privacy.html` in step with `docs/PRIVACY.md` and the Play Data safety form. The app has
+  no ad SDK; the policy must stay that way unless the product changes.
 - Replace `brian@dabotap.com` if the support inbox changes.
 - Do not add analytics, tracking pixels or a mailing-list form.

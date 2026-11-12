@@ -26,7 +26,7 @@
 
   <main class="wrap policy">
     <h1>Privacy policy</h1>
-    <p class="meta">Baby Monitor for Android · Effective 12 November 2026 · Version 1.4</p>
+    <p class="meta">Baby Monitor for Android · Effective 12 November 2026 · Version 2.0</p>
 
     <p>
       Baby Monitor (“the app”, “we”, “us”) is a noise monitor for Android,
@@ -36,7 +36,8 @@
       Live view, the room’s audio and (optionally) video go directly to another device
       on your own Wi-Fi. If you turn on Remote photos, a single photo at a time can be
       requested by the phone you paired, over your own Tailscale network. We never
-      receive your audio, video or photos.</strong>
+      receive your audio, video or photos. There are no ads, no advertising SDK and
+      no tracking.</strong>
     </p>
 
     <h2>1. Who we are</h2>
@@ -66,6 +67,11 @@
       When you turn it on and pair one phone, that phone can ask this camera for a
       single photo over your own Tailscale network. It is photos only: there is no
       remote live video or audio. Dabotap runs no relay and receives no copy.
+    </p>
+    <p>
+      <strong>There are no ads.</strong> The app has no advertising SDK, no advertising
+      ID and no consent form. The only internet access is the optional remote-photo
+      request over the network you supply (Tailscale).
     </p>
 
     <h2>3. Audio, video, Live view and Remote photos</h2>
@@ -110,6 +116,7 @@
         <tr><td>Nearby Wi-Fi (multicast)</td><td>To advertise this phone on the local network and keep discovery and the stream alive with the screen off.</td></tr>
         <tr><td>Full-screen alerts</td><td>To show the alert over the lock screen. On Android 14+ this is special access; without it the alert appears as a high-priority notification.</td></tr>
         <tr><td>Wake lock, vibrate</td><td>To keep the CPU alive during monitoring and to make the alert noticeable.</td></tr>
+        <tr><td>Internet</td><td>Only for Remote photos: one authenticated request to the camera over your own Tailscale network. There is no ad traffic and no Dabotap server.</td></tr>
       </tbody>
     </table>
 
@@ -120,19 +127,8 @@
       <li>No audio, transcripts or recordings.</li>
       <li>No account, contacts, calendar or files.</li>
       <li>No audio, video or photo uploaded to us: Live view is a direct connection between two devices on your Wi-Fi, and remote photos travel directly between your two phones over your Tailscale network.</li>
+      <li>No advertising ID, ad data, tracking or profiling: the app contains no advertising or analytics SDK.</li>
     </ul>
-
-    <h3>Advertising</h3>
-    <p>
-      The app is free and shows one banner ad supplied by <strong>Google AdMob</strong>.
-      AdMob may collect device identifiers (including the advertising ID), IP address,
-      approximate location and ad interactions, and may share that data with Google and
-      its ad partners for advertising. Audio is never sent to AdMob or any advertiser.
-      Where required (for example in the EEA, UK and Switzerland), the app shows a
-      Google consent form before requesting ads. You can decline: the monitor still
-      works and the banner simply does not load. Google’s privacy policy:
-      <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.
-    </p>
 
     <h2>8. Sharing</h2>
     <p>
@@ -142,10 +138,9 @@
       into. Tailscale carries the encrypted traffic and may process connection
       metadata (which of your devices connected, when, and how much data) under
       <a href="https://tailscale.com/privacy-policy">Tailscale’s privacy policy</a>;
-      it cannot read the photo, and Dabotap receives nothing. The banner ad is served
-      by Google AdMob, which may collect and share the advertising data described above
-      under Google’s privacy policy. Google Play also processes install and crash
-      information under its own policy. Those are between you and Google.
+      it cannot read the photo, and Dabotap receives nothing. Google Play processes
+      install and crash information under its own policy. That is between you and
+      Google.
     </p>
 
     <h2>9. Retention and deletion</h2>
@@ -181,7 +176,6 @@
       <li>Stop monitoring at any time from the app or its notification.</li>
       <li>Revoke microphone, phone or notification access in Android Settings.</li>
       <li>Clear the app’s storage or uninstall it to delete the number and settings.</li>
-      <li>Decline the ad consent form where it is shown; the banner will not load.</li>
       <li>Turn Live view off, or press Stop while watching, to end a local stream immediately.</li>
       <li>Turn Remote photos off, or press <strong>New code</strong> on the camera phone, to revoke the paired phone; press <strong>Forget this camera</strong> on the viewer to remove your half.</li>
     </ul>
