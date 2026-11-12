@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support — Monitor</title>
+  <meta name="description" content="Help with Monitor: why Android shows a notification, how the noise level works, and what to do when an alert does not call.">
+  <meta name="theme-color" content="#0B1522">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="/">
+        <img src="icon.svg" alt="">
+        <span>Monitor<small>Noise monitor</small></span>
+      </a>
+      <nav class="links" aria-label="Primary">
+        <a href="index.html#how">How it works</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap policy">
+    <h1>Support</h1>
+    <p class="meta">Monitor for Android · prototype build 0.2.0</p>
+
+    <p>
+      The first build is being prepared for Google Play. These are the questions the
+      prototype is designed to answer — and the limits you should know before you
+      trust it overnight.
+    </p>
+
+    <div class="faq mt-28">
+      <details open>
+        <summary>Does the app record or upload audio?</summary>
+        <p>
+          No. It reads short microphone frames, computes a loudness value, and throws
+          the frames away. There is no recorder, no audio file, no cloud and no
+          analytics SDK. <a href="privacy.html">Read the privacy policy</a>.
+        </p>
+      </details>
+
+      <details>
+        <summary>Why does Android show a permanent notification?</summary>
+        <p>
+          Android requires a visible notification for any app that keeps the
+          microphone open in the background. Without it the system would stop the
+          monitor. The notification also has a Stop button.
+        </p>
+      </details>
+
+      <details>
+        <summary>What does −40 dBFS mean?</summary>
+        <p>
+          dBFS is loudness relative to the loudest signal the phone can represent;
+          0 dBFS is the maximum and quieter sounds are negative. −40 dBFS is roughly
+          a loud voice across a quiet room on a typical phone. The absolute number varies by
+          device, so use <strong>Learn room</strong> to set it from your own
+          room, then adjust by ear.
+        </p>
+      </details>
+
+      <details>
+        <summary>The alert appeared but no call was placed.</summary>
+        <p>
+          Check three things: the phone number is valid and includes the country code;
+          the Phone permission is allowed; and the app has full-screen alert access
+          (Android 14+). If calling permission is missing, the alert opens the dialer
+          with the number filled in — tap the call button there.
+        </p>
+      </details>
+
+      <details>
+        <summary>Will it keep listening with the screen off?</summary>
+        <p>
+          Yes, while the foreground service is running. Android’s battery optimisation
+          can still stop it, so allow unrestricted battery use for the app. Keep the
+          phone plugged in for overnight monitoring. No app can guarantee delivery
+          through every manufacturer’s battery saver.
+        </p>
+      </details>
+
+      <details>
+        <summary>Does it need internet?</summary>
+        <p>
+          No. Monitoring, alerts and the call all work offline. The call itself uses
+          your mobile network, as any call does.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can two phones monitor the same room?</summary>
+        <p>
+          Each phone runs its own monitor. The prototype does not sync between devices
+          and has no companion web player. That is deliberate: adding a cloud would
+          mean audio leaving the phone.
+        </p>
+      </details>
+
+      <details>
+        <summary>Is this a medical device?</summary>
+        <p>
+          No. It is an audio aid, not a medical device, and not a substitute for adult
+          supervision. It detects loudness, not breathing, movement or wellbeing.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I stop it?</summary>
+        <p>
+          Open the app and press <strong>Stop monitoring</strong>, or use the Stop action
+          on the ongoing notification. Uninstalling also stops it and deletes the
+          number and settings.
+        </p>
+      </details>
+    </div>
+
+    <h2 id="early-access">Launch note</h2>
+    <p>
+      To be told when the Google Play listing is live, email
+      <a href="mailto:brian@dabotap.com?subject=Dabotap%20Monitor%20launch%20note">brian@dabotap.com</a>
+      with “Monitor launch” in the subject. There is no mailing list and no tracking.
+    </p>
+
+    <h2>Report a problem</h2>
+    <p>
+      Include your phone model, Android version, and what the alert did (rang, showed a
+      notification, opened the dialer, or nothing). Do not send a recording of your
+      room — the app does not create one, and we do not want one.
+    </p>
+    <p><a class="btn primary" href="mailto:brian@dabotap.com?subject=Dabotap%20Monitor%20support">Email support</a></p>
+  </main>
+
+  <footer class="site">
+    <div class="wrap footer-row">
+      <span>© 2026 Dabotap. Monitor is an aid, not a medical device.</span>
+      <span><a href="index.html">Home</a> · <a href="privacy.html">Privacy</a></span>
+    </div>
+  </footer>
+</body>
+</html>
