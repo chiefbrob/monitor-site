@@ -1,5 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" role="img" aria-label="Monitor">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" role="img" aria-label="Baby Monitor">
   <rect width="108" height="108" fill="#0B1522"/>
-  <path d="M22 75V27h5l27 37 27-37h5v48h-10V44L54 70 32 44v31z" fill="#FFC857"/>
-  <path d="M22 83h64v4H22z" fill="#4FD1C5"/>
+  <circle cx="54" cy="52" r="29" fill="#FFC857"/>
+  <path d="M37 47 Q43 54 49 47" fill="none" stroke="#0B1522" stroke-width="4.2" stroke-linecap="round"/>
+  <path d="M59 47 Q65 54 71 47" fill="none" stroke="#0B1522" stroke-width="4.2" stroke-linecap="round"/>
+  <ellipse cx="54" cy="67" rx="9" ry="10" fill="#0B1522"/>
+  <path d="M40 53 C40 53 33 63 40 67 C47 63 40 53 40 53" fill="#4FD1C5"/>
+  <path d="M54 26 Q58 20 63 24" fill="none" stroke="#FFC857" stroke-width="4" stroke-linecap="round"/>
 </svg>
