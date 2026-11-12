@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Baby Monitor — any noise, one call</title>
-  <meta name="description" content="Baby Monitor is an Android noise monitor. Set a level; this phone listens and calls your number when the room gets loud. Optional live view to a second phone on the same Wi-Fi, with no account and no cloud.">
+  <meta name="description" content="Baby Monitor is an Android noise monitor. Set a level; this phone listens and calls your number when the room gets loud. Optional live view on your Wi-Fi, and optional remote photos over your own Tailscale network — no account and no Dabotap server.">
   <meta name="theme-color" content="#0B1522">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <meta property="og:title" content="Baby Monitor">
-  <meta property="og:description" content="Any noise. One call. A free Android baby monitor with an optional second screen on your own Wi-Fi.">
+  <meta property="og:description" content="Any noise. One call. A free Android baby monitor with an optional second screen on your own Wi-Fi, and remote photos over your own Tailscale network.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://monitor.dabotap.com/">
 </head>
@@ -38,7 +38,7 @@
           <a class="btn primary" href="mailto:brian@dabotap.com?subject=Baby Monitor%20launch%20note">Get launch note</a>
           <a class="btn ghost" href="#how">How it works</a>
         </div>
-        <p class="fineprint">Your room stays on your Wi-Fi. Free, ad-supported. No account.</p>
+        <p class="fineprint">Your room, your network. Free, ad-supported. No account.</p>
       </div>
       <div class="phone">
         <div class="notch" aria-hidden="true"></div>
@@ -114,6 +114,30 @@
           </article>
         </div>
         <p class="note mt-22"><strong>Same network only.</strong> Guest Wi-Fi and routers that isolate devices will block it.</p>
+      </div>
+    </section>
+
+    <section id="remote-photos">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>A photo, when you're away.</h2>
+          <p>Photos only, over your own Tailscale network. No Dabotap server.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>One paired phone</h3>
+            <p>Scan a QR code on the camera phone. <strong>New code</strong> revokes the pairing.</p>
+          </article>
+          <article class="card">
+            <h3>Photos, not video</h3>
+            <p>Live video and audio stay on your Wi-Fi. Away from home you get one photo, when you ask for it.</p>
+          </article>
+          <article class="card">
+            <h3>Your network</h3>
+            <p>Install Tailscale on both phones. The photo goes phone to phone; we never receive it.</p>
+          </article>
+        </div>
+        <p class="note mt-22"><strong>Requires Tailscale.</strong> The free Tailscale app and an account are needed on both phones. There is no remote live stream and no stored photo.</p>
       </div>
     </section>
 

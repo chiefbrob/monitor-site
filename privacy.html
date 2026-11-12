@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy policy — Baby Monitor</title>
-  <meta name="description" content="How Baby Monitor handles microphone audio, optional local-network live view and the phone number you set: never recorded, never uploaded.">
+  <meta name="description" content="How Baby Monitor handles microphone audio, optional local-network live view, remote photos over your own Tailscale network, and the phone number you set: never recorded, never uploaded.">
   <meta name="theme-color" content="#0B1522">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -26,7 +26,7 @@
 
   <main class="wrap policy">
     <h1>Privacy policy</h1>
-    <p class="meta">Baby Monitor for Android · Effective 12 November 2026 · Version 1.3</p>
+    <p class="meta">Baby Monitor for Android · Effective 12 November 2026 · Version 1.4</p>
 
     <p>
       Baby Monitor (“the app”, “we”, “us”) is a noise monitor for Android,
@@ -34,7 +34,9 @@
       information. The short version: <strong>the app listens, decides, and calls —
       all on your phone. Audio is never recorded and never reaches us. If you turn on
       Live view, the room’s audio and (optionally) video go directly to another device
-      on your own Wi-Fi. Nothing goes to the internet.</strong>
+      on your own Wi-Fi. If you turn on Remote photos, a single photo at a time can be
+      requested by the phone you paired, over your own Tailscale network. We never
+      receive your audio, video or photos.</strong>
     </p>
 
     <h2>1. Who we are</h2>
@@ -59,8 +61,14 @@
       and the connection is direct: there is no relay server, no account and no
       internet upload.
     </p>
+    <p>
+      <strong>Remote photos</strong> is a separate, optional away-from-home feature.
+      When you turn it on and pair one phone, that phone can ask this camera for a
+      single photo over your own Tailscale network. It is photos only: there is no
+      remote live video or audio. Dabotap runs no relay and receives no copy.
+    </p>
 
-    <h2>3. Audio, video and Live view</h2>
+    <h2>3. Audio, video, Live view and Remote photos</h2>
     <ul>
       <li><strong>We do not record audio or video.</strong> No audio file, clip, frame or buffer is written to storage, and there is no recording feature.</li>
       <li><strong>Audio is processed in memory</strong> long enough to calculate a loudness value (dBFS), then discarded.</li>
@@ -68,6 +76,9 @@
       <li><strong>Live view is local only.</strong> If you turn it on, the microphone track — and the camera while a viewer is connected — is sent directly to the other device on your Wi-Fi, encrypted in transit. The audio and video never pass through a Dabotap server, a cloud service or the internet.</li>
       <li><strong>The camera is used only while someone is watching.</strong> The camera starts when a viewer connects and stops when the last one leaves. It is released with the service.</li>
       <li><strong>Live view is off by default</strong> and is not needed for the noise monitor, the alert or the call.</li>
+      <li><strong>Remote photos are photos only.</strong> Each request opens the camera for one capture, returns one JPEG to the paired phone, and closes the camera. No photo is written to storage by the app, and no photo is sent to Dabotap. The camera will not take a photo while a live viewer is using it.</li>
+      <li><strong>Remote photos are off by default.</strong> They need the free Tailscale app on both phones. Tailscale carries the encrypted traffic between your devices; Dabotap is not part of that network.</li>
+      <li><strong>Pairing is a code you can revoke.</strong> The camera shows a QR code containing its tailnet address and a long random token. The token is stored encrypted on both phones. <strong>New code</strong> invalidates the old pairing; <strong>Forget this camera</strong> removes it from the viewer.</li>
     </ul>
 
     <h2>4. The phone number you enter</h2>
@@ -94,8 +105,8 @@
         <tr><td>Phone</td><td>To place the call to the number you set. If you decline, the alert opens the dialer with the number filled in instead.</td></tr>
         <tr><td>Notifications</td><td>Android requires a visible notification for a foreground service; it also carries alerts.</td></tr>
         <tr><td>Foreground service (microphone)</td><td>To keep listening while the screen is off or the app is in the background.</td></tr>
-        <tr><td>Camera</td><td>Only if you turn on Live view video, to publish the room while a viewer is connected.</td></tr>
-        <tr><td>Foreground service (camera)</td><td>To keep the camera available while the screen is off and a viewer is watching.</td></tr>
+        <tr><td>Camera</td><td>Only if you turn on Live view video or Remote photos: to publish video while a viewer is connected, or to take the photo your paired phone asked for.</td></tr>
+        <tr><td>Foreground service (camera)</td><td>To keep the camera available while the screen is off and a viewer is watching or a photo is requested.</td></tr>
         <tr><td>Nearby Wi-Fi (multicast)</td><td>To advertise this phone on the local network and keep discovery and the stream alive with the screen off.</td></tr>
         <tr><td>Full-screen alerts</td><td>To show the alert over the lock screen. On Android 14+ this is special access; without it the alert appears as a high-priority notification.</td></tr>
         <tr><td>Wake lock, vibrate</td><td>To keep the CPU alive during monitoring and to make the alert noticeable.</td></tr>
@@ -107,8 +118,8 @@
       <li>No account, name, email or password.</li>
       <li>No analytics or crash-reporting SDK of our own.</li>
       <li>No audio, transcripts or recordings.</li>
-      <li>No account, contacts, calendar, photos or files.</li>
-      <li>No audio or video uploaded to us: Live view is a direct connection between two devices on your Wi-Fi.</li>
+      <li>No account, contacts, calendar or files.</li>
+      <li>No audio, video or photo uploaded to us: Live view is a direct connection between two devices on your Wi-Fi, and remote photos travel directly between your two phones over your Tailscale network.</li>
     </ul>
 
     <h3>Advertising</h3>
@@ -125,19 +136,26 @@
 
     <h2>8. Sharing</h2>
     <p>
-      We do not receive or share your audio, number or settings. The banner ad is
-      served by Google AdMob, which may collect and share the advertising data
-      described above under Google’s privacy policy. Google Play also processes
-      install and crash information under its own policy. Those are between you and
-      Google.
+      We do not receive or share your audio, number, settings or photos. If you turn
+      on Remote photos, the photo goes to the phone you paired through
+      <strong>Tailscale</strong>, a third-party private network you install and sign
+      into. Tailscale carries the encrypted traffic and may process connection
+      metadata (which of your devices connected, when, and how much data) under
+      <a href="https://tailscale.com/privacy-policy">Tailscale’s privacy policy</a>;
+      it cannot read the photo, and Dabotap receives nothing. The banner ad is served
+      by Google AdMob, which may collect and share the advertising data described above
+      under Google’s privacy policy. Google Play also processes install and crash
+      information under its own policy. Those are between you and Google.
     </p>
 
     <h2>9. Retention and deletion</h2>
     <p>
       Your settings and number remain on your phone until you change them, clear the
       app’s storage, or uninstall the app. Uninstalling removes the app’s private
-      storage. We hold no copy to delete. Live view streams are relayed only for the
-      moment they are watched: nothing is stored by the app, and we never receive a copy.
+      storage. We hold no copy to delete. Live view streams exist only for the moment
+      they are watched: nothing is stored by the app, and we never receive a copy.
+      Remote photos are held in memory only for the HTTP response: the app writes no
+      photo to disk and keeps no history, and we never receive a copy.
     </p>
 
     <h2>10. Security</h2>
@@ -145,6 +163,10 @@
       Data stays inside the app’s sandbox. The best protection is your device lock and
       keeping Android up to date. A call placed by the app goes through your phone’s
       normal telephony stack and your mobile carrier, which have their own policies.
+      Remote-photo pairing tokens are stored with a key held by Android Keystore, and
+      the camera endpoint requires that token and accepts only local-network or tailnet
+      peers. Photos are carried by WireGuard (Tailscale) rather than plain internet, so
+      the app allows cleartext HTTP only inside that tunnel.
     </p>
 
     <h2>11. Children</h2>
@@ -161,6 +183,7 @@
       <li>Clear the app’s storage or uninstall it to delete the number and settings.</li>
       <li>Decline the ad consent form where it is shown; the banner will not load.</li>
       <li>Turn Live view off, or press Stop while watching, to end a local stream immediately.</li>
+      <li>Turn Remote photos off, or press <strong>New code</strong> on the camera phone, to revoke the paired phone; press <strong>Forget this camera</strong> on the viewer to remove your half.</li>
     </ul>
 
     <h2>13. Changes</h2>
