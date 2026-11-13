@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Foreground service demo — microphone · Baby Monitor</title>
+  <meta name="description" content="Screen recording of Baby Monitor using the FOREGROUND_SERVICE_MICROPHONE type: disclosure, permission, ongoing notification, background listening, noise alert and call.">
+  <meta name="theme-color" content="#0B1522">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="demo.css">
+  <meta property="og:title" content="Baby Monitor — background audio input demo">
+  <meta property="og:description" content="A real screen recording of the microphone foreground service: disclosure, permission, pinned notification, alert and call.">
+  <meta property="og:type" content="video.other">
+  <meta property="og:url" content="https://monitor.dabotap.com/fgs-microphone.html">
+  <meta property="og:video" content="https://monitor.dabotap.com/videos/fgs-microphone.mp4">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="/">
+        <img src="icon.svg" alt="">
+        <span>Baby Monitor<small>by Dabotap</small></span>
+      </a>
+      <nav class="links" aria-label="Primary">
+        <a href="/#how">How it works</a>
+        <a href="fgs-camera.html">Camera demo</a>
+        <a href="support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap demo">
+    <span class="eyebrow"><span class="dot"></span> Foreground service · Microphone</span>
+    <h1>Background audio input</h1>
+    <p class="lede">The microphone foreground service in use: the in-app disclosure, the Android permission, the pinned notification, background listening, a noise crossing the level, and the alert and call that follow.</p>
+
+    <figure class="player">
+      <video controls playsinline preload="metadata" poster="videos/fgs-microphone-poster.jpg">
+        <source src="videos/fgs-microphone.mp4" type="video/mp4">
+        Your browser cannot play this video. <a href="videos/fgs-microphone.mp4">Download the MP4</a>.
+      </video>
+    </figure>
+    <p class="meta"><span>1:09</span><span>1920 × 1080</span><span>Baby Monitor 0.7.0</span><span>Pixel 6a · Android 13</span><span>No mockups</span></p>
+
+    <div class="cols">
+      <div>
+        <h2>What the video shows</h2>
+        <ol class="timeline">
+          <li><b>0:00</b> Start listening; the in-app microphone disclosure is shown and accepted.</li>
+          <li><b>0:09</b> The disclosure explains what the microphone is for before Android asks.</li>
+          <li><b>0:13</b> Android asks for microphone access and the permission is granted.</li>
+          <li><b>0:18</b> Notifications are allowed; the foreground service starts.</li>
+          <li><b>0:24</b> The service keeps listening while the app is not being touched.</li>
+          <li><b>0:30</b> The pinned notification in the shade, with the microphone privacy indicator.</li>
+          <li><b>0:38</b> A noise crosses the trigger level (−40 dBFS).</li>
+          <li><b>0:44</b> The heads-up alert names the level and the saved number.</li>
+          <li><b>0:52</b> The full-screen alert opens; the level is already recorded.</li>
+          <li><b>1:02</b> <strong>Call now</strong>; with CALL_PHONE declined the dialer opens with the number ready.</li>
+        </ol>
+
+        <h2 style="margin-top:26px">What a reviewer should look for</h2>
+        <div class="panel">
+          <p><span class="k">The microphone is actually in use.</span> The level meter moves, the Android privacy indicator shows in the status bar, and the pinned notification stays up while the service runs.</p>
+          <p><span class="k">It is user-initiated.</span> Nothing starts until the user presses Start and accepts the disclosure and the Android prompt.</p>
+          <p><span class="k">The alert is the task.</span> When the level holds above the trigger, the phone shows the alert and the call path. A camera failure or an interrupted service never hides that the monitor was interrupted.</p>
+        </div>
+      </div>
+
+      <aside>
+        <h2>Play Console declaration</h2>
+        <div class="panel">
+          <h3>Use case</h3>
+          <p><strong>Background audio input</strong></p>
+          <h3 style="margin-top:14px">App functionality</h3>
+          <p>The core feature is continuous room-noise monitoring. After an in-app microphone disclosure and the Android permission prompt, the user presses Start. A microphone foreground service measures the room's loudness in memory and compares it with the threshold the user set. If the level stays above the threshold for the hold time, the phone shows an alert and places a call to the user's number. Audio is measured as dBFS and discarded; it is never recorded, saved or uploaded. The screen may be off or the app in the background, and a visible ongoing notification is always shown while the service runs.</p>
+          <h3 style="margin-top:14px">User impact if interrupted</h3>
+          <p>If Android defers or interrupts the microphone foreground service, the room is not monitored: no alert is raised and no call is placed. The app shows “monitoring was interrupted” rather than pretending to listen, and the user must press Start again. No audio is buffered or replayed when it resumes.</p>
+        </div>
+        <div class="actions" style="margin-top:16px;margin-bottom:0">
+          <a class="btn primary" href="videos/fgs-microphone.mp4" download>Download MP4</a>
+          <a class="btn ghost" href="fgs-camera.html">Camera demo</a>
+        </div>
+      </aside>
+    </div>
+
+    <p class="note"><strong>Recording notes.</strong> Real app, no mockups: screen recorded from Baby Monitor 0.7.0 on a Pixel 6a AVD running Android 13. The room sound is fed to the emulator's virtual microphone; the disclosure, permission prompt, notification, level meter, alert and dialer are produced by the app itself. The number shown is fictitious. There is no audio track in the video because Android does not let a screen recording capture the microphone stream that the service is measuring; the on-screen meter and the privacy indicator are the evidence that the microphone is in use.</p>
+
+    <div class="other">
+      <p>This page is the link for the <strong>Microphone</strong> field in <em>Play Console → App content → Foreground service permissions</em>.</p>
+      <a href="fgs-camera.html">Next: camera demo →</a>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap footer-row">
+      <span>© 2026 Dabotap · Baby Monitor</span>
+      <span>
+        <a href="privacy.html">Privacy</a> ·
+        <a href="support.html">Support</a> ·
+        <a href="mailto:brian@dabotap.com">brian@dabotap.com</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

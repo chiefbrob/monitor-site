@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Foreground service demo — camera · Baby Monitor</title>
+  <meta name="description" content="Screen recording of Baby Monitor using the FOREGROUND_SERVICE_CAMERA type: Live view, camera disclosure, a second phone watching, the camera privacy indicator and the ongoing notification.">
+  <meta name="theme-color" content="#0B1522">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="demo.css">
+  <meta property="og:title" content="Baby Monitor — background camera streaming demo">
+  <meta property="og:description" content="A real screen recording of the camera foreground service: Live view, a second phone watching, the camera indicator and the pinned notification.">
+  <meta property="og:type" content="video.other">
+  <meta property="og:url" content="https://monitor.dabotap.com/fgs-camera.html">
+  <meta property="og:video" content="https://monitor.dabotap.com/videos/fgs-camera.mp4">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="/">
+        <img src="icon.svg" alt="">
+        <span>Baby Monitor<small>by Dabotap</small></span>
+      </a>
+      <nav class="links" aria-label="Primary">
+        <a href="/#how">How it works</a>
+        <a href="fgs-microphone.html">Microphone demo</a>
+        <a href="support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap demo">
+    <span class="eyebrow"><span class="dot"></span> Foreground service · Camera</span>
+    <h1>Background camera streaming</h1>
+    <p class="lede">The camera foreground service in use: Live view is switched on, the camera disclosure is accepted, a second phone finds the room and watches the live stream, and the camera is released when the viewer leaves.</p>
+
+    <figure class="player">
+      <video controls playsinline preload="metadata" poster="videos/fgs-camera-poster.jpg">
+        <source src="videos/fgs-camera.mp4" type="video/mp4">
+        Your browser cannot play this video. <a href="videos/fgs-camera.mp4">Download the MP4</a>.
+      </video>
+    </figure>
+    <p class="meta"><span>1:01</span><span>1920 × 1080</span><span>Baby Monitor 0.7.0</span><span>Pixel 6a · Android 13</span><span>No mockups</span></p>
+
+    <div class="cols">
+      <div>
+        <h2>What the video shows</h2>
+        <ol class="timeline">
+          <li><b>0:00</b> Turn on <strong>Live view</strong> and <strong>Include video</strong> in the Live view &amp; photos card.</li>
+          <li><b>0:10</b> The app explains that the camera runs only while a phone is watching; the disclosure is accepted.</li>
+          <li><b>0:19</b> A second phone opens <strong>Watch</strong>, finds the room on the same Wi-Fi and taps it.</li>
+          <li><b>0:27</b> Live video and audio in the viewer. The monitor's camera indicator is on; the video is the watch screen receiving the real peer-to-peer stream.</li>
+          <li><b>0:47</b> The ongoing foreground-service notification and the camera + microphone privacy indicators in the shade.</li>
+          <li><b>0:51</b> <strong>Stop watching</strong>; the viewer closes, the camera stops, and the monitor keeps listening.</li>
+        </ol>
+
+        <h2 style="margin-top:26px">What a reviewer should look for</h2>
+        <div class="panel">
+          <p><span class="k">The camera is actually in use.</span> Live frames play in the app's Watch screen, and Android shows the camera privacy indicator while the viewer is connected.</p>
+          <p><span class="k">It is user-initiated.</span> The camera starts only after the user switches Live view on, enables video, and accepts the camera disclosure. It is never on for an empty room.</p>
+          <p><span class="k">It stops by itself.</span> The camera capturer starts on the first viewer and stops when the last viewer leaves; the monitor keeps its microphone service.</p>
+          <p><span class="k">The service is visible.</span> The ongoing notification and the privacy chip stay in the status bar while the camera runs.</p>
+        </div>
+      </div>
+
+      <aside>
+        <h2>Play Console declaration</h2>
+        <div class="panel">
+          <h3>Use case</h3>
+          <p><strong>Background camera streaming</strong></p>
+          <h3 style="margin-top:14px">App functionality</h3>
+          <p>Baby Monitor is a baby monitor. The user can switch on <strong>Include video</strong> (Live view) and/or <strong>Remote photos</strong>. With Live view, this phone publishes the room camera over a direct WebRTC connection to a second phone the user runs on the same Wi-Fi, while this phone's screen is off or the app is in the background. With Remote photos, one phone the user paired by QR can request a single still photo over the user's own Tailscale network; the camera opens only for that request and closes immediately. The camera is never used unless the user has switched one of these features on, and the ongoing foreground-service notification is always visible.</p>
+          <h3 style="margin-top:14px">User impact if interrupted</h3>
+          <p>If Android defers or interrupts the camera foreground service, a second phone cannot start watching and a remote-photo request fails after a short timeout. The app reports the failure in the Live view card or the remote viewer and keeps the noise monitor, alert and call running. A camera failure never stops monitoring or the call path.</p>
+        </div>
+        <div class="actions" style="margin-top:16px;margin-bottom:0">
+          <a class="btn primary" href="videos/fgs-camera.mp4" download>Download MP4</a>
+          <a class="btn ghost" href="fgs-microphone.html">Microphone demo</a>
+        </div>
+      </aside>
+    </div>
+
+    <p class="note"><strong>Recording notes.</strong> Real app, no mockups: screen recorded from Baby Monitor 0.7.0 on a Pixel 6a AVD running Android 13. The camera image is the emulator's virtual scene; the Watch screen is the app's viewer receiving the real WebRTC stream. On one emulator the app can act as both the camera and the viewer through its same-device Watch path, so the monitor and viewer frames come from one recording. There is no audio track: the screen recording does not capture the camera or microphone stream.</p>
+
+    <div class="other">
+      <p>This page is the link for the <strong>Camera</strong> field in <em>Play Console → App content → Foreground service permissions</em>.</p>
+      <a href="fgs-microphone.html">See the microphone demo →</a>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap footer-row">
+      <span>© 2026 Dabotap · Baby Monitor</span>
+      <span>
+        <a href="privacy.html">Privacy</a> ·
+        <a href="support.html">Support</a> ·
+        <a href="mailto:brian@dabotap.com">brian@dabotap.com</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

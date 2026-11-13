@@ -9,6 +9,9 @@ Pages, with a proxied Cloudflare CNAME for `monitor.dabotap.com` in front of it.
 - `index.html` — landing
 - `privacy.html` — Play privacy policy
 - `support.html` — FAQ
+- `fgs-microphone.html` — Play Console demo: microphone foreground service
+- `fgs-camera.html` — Play Console demo: camera foreground service
+- `videos/` — the two demo MP4s and their posters
 - `screenshots/` — app captures used by the phone mockup
 - `CNAME` — `monitor.dabotap.com`
 - `.nojekyll` — keep GitHub Pages from running Jekyll
